@@ -13,11 +13,7 @@ class Task(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     deadline = models.DateTimeField(auto_now_add=False)
     done = models.BooleanField(default=False)
-    tag = models.ForeignKey(
-        Tag,
-        on_delete=models.CASCADE,
-        related_name="tasks"
-    )
+    tags = models.ManyToManyField(Tag, related_name="tasks")
 
     def __str__(self):
         return f"[{self.content}]; {self.tag}"
