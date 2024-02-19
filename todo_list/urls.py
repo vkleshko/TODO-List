@@ -6,6 +6,7 @@ from todo_list.views import (
     TaskUpdateView,
     TaskDeleteView,
     TaskCompleteOrUndoView,
+    TagListView,
 )
 
 urlpatterns = [
@@ -33,6 +34,10 @@ urlpatterns = [
         TaskCompleteOrUndoView.as_view(),
         name="task-complete-or-undo"
     ),
+    path(
+        "tags/",
+        TagListView.as_view(),
+        name="tag-list"),
 
 ]
 
