@@ -45,7 +45,7 @@
         {% for tag in task.tags.all %}
         {{ tag.name }}
         {% endfor %}
-        <a href="#">Update</a>
+        <a href="{% url 'todo_list:task-update' pk=task.id %}">Update</a>
         <a href="#">Delete</a>
       </p>
     </div>

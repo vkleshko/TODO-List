@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Tag(models.Model):
@@ -17,6 +18,9 @@ class Task(models.Model):
 
     def __str__(self):
         return f"[{self.content}]; {self.tags}"
+
+    def get_absolute_url(self):
+        return reverse("todo_list:index")
 
     class Meta:
         ordering = ["done"]
