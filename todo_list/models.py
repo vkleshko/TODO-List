@@ -23,4 +23,4 @@ class Task(models.Model):
         return f"[{self.content}]; {self.tag}"
 
     class Meta:
-        ordering = ["created"]
+        ordering = ["done"]
