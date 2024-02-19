@@ -1,5 +1,6 @@
-from django.views import generic
+from django.views import generic, View
 from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
 
 from todo_list.forms import TaskForm
 from todo_list.models import Task
@@ -26,3 +27,14 @@ class TaskUpdateView(generic.UpdateView):
 class TaskDeleteView(generic.DeleteView):
     model = Task
     success_url = reverse_lazy("todo_list:index")
+
+
+class TaskCompleteOrUndoView(View):
+    def post(self, request, pk):
+        task = Task.objects.get(id=pk)
+
+        task.done = not task.done
+
+        task.save()
+
+        return HttpResponseRedirect(reverse_lazy("todo_list:index"))
