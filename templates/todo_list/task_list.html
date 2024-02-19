@@ -16,22 +16,16 @@
         <strong>{{ task.content }}</strong>
         {% if task.done %}
         <span class="text-success"><strong>Done</strong></span>
-        <a
-            href="#"
-            class="btn btn-secondary link-to-page"
-            style="float: right"
-        >
-          Undo
-        </a>
+        <form action="{% url 'todo_list:task-complete-or-undo' pk=task.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-secondary" style="float: right;">Undo</button>
+        </form>
         {% else %}
         <span class="text-danger"><strong>Not done</strong></span>
-        <a
-            href="#"
-            class="btn btn-success link-to-page"
-            style="float: right"
-        >
-          Complete
-        </a>
+        <form action="{% url 'todo_list:task-complete-or-undo' pk=task.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-success" style="float: right;">Complete</button>
+        </form>
         {% endif %}
 
       </div>
