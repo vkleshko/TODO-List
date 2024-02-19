@@ -9,6 +9,7 @@ from todo_list.views import (
     TagListView,
     TagCreateView,
     TagUpdateView,
+    TagDeleteView
 )
 
 urlpatterns = [
@@ -49,6 +50,11 @@ urlpatterns = [
         "tags/update/<int:pk>/",
         TagUpdateView.as_view(),
         name="tag-update"
+    ),
+    path(
+        "tags/delete/<int:pk>/",
+        TagDeleteView.as_view(),
+        name="tag-delete"
     ),
 
 ]
